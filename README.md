@@ -8,12 +8,10 @@ The CPU Emulator is a simple Java-application for educational purposes, which de
 
 ## Available commands ##
 
-Command       | Description                                     | Usage example
+Command       | Description
 ------------- | ---------------------------------------------------------------------------------------------------------
 out val       | Output val into console (is a [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) for emulator)
-mov op1, op2  | Copies the value of op2 into op1                | mov ax, 3
-                                                                | mov cx, [ax]
-                                                                | mov [1], "Hallo world"
+mov op1, op2  | Copies the value of op2 into op1
 call x        | 
 ret           | Return from subroutine unconditionally to an address from a stack head
 push op1      | 
