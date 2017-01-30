@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainFormController">
+   <children>
+      <VBox prefHeight="716.0" prefWidth="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="593.0" prefWidth="513.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="616.0" prefWidth="291.0">
+                     <children>
+                        <Label text="Memory (RAM)">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <effect>
+                              <Reflection bottomOpacity="0.08" />
+                           </effect>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TableView fx:id="tblMemory" editable="true" prefHeight="513.0" prefWidth="210.0" VBox.vgrow="ALWAYS">
+                          <columns>
+                            <TableColumn prefWidth="56.0" text="Address" />
+                            <TableColumn prefWidth="182.0" text="Value" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="CPU">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <effect>
+                              <Reflection bottomOpacity="0.08" />
+                           </effect>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="298.0" fitWidth="298.0">
+                                 <image>
+                                    <Image url="@processor.png" />
+                                 </image>
+                              </ImageView>
+                              <GridPane maxHeight="183.0" minHeight="183.0" prefHeight="183.0" prefWidth="297.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.0" minWidth="10.0" prefWidth="60.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label fx:id="lbIP" text="IP" textFill="#34d670">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="edIP" text="0" GridPane.columnIndex="1" />
+                                    <TextField fx:id="edSP" text="15" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="edAX" text="0" GridPane.columnIndex="3" />
+                                    <TextField fx:id="edBX" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                    <TextField fx:id="edCX" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                    <TextField fx:id="edDX" prefHeight="25.0" prefWidth="68.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                    <Label fx:id="lbSP" text="SP" textFill="#ff3db6" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="lbAX" text="AX" textFill="#616161" GridPane.columnIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="20.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbBX" text="BX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets left="20.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbCX" text="CX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="20.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbDX" text="DX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="20.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="ZF" textFill="#1859ff" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets left="20.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lbZF" text="0" textFill="#006aff" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="BP" textFill="#13cdee" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <TextField fx:id="edBP" text="15" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text="SF" textFill="#1859ff" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="lbSF" text="0" textFill="#006aff" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </GridPane>
+                           </children>
+                        </StackPane>
+                        <HBox prefHeight="42.0" prefWidth="296.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#onRunClicked" prefHeight="30.0" prefWidth="146.0" text="Run step" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@check.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#onResetClicked" prefHeight="25.0" prefWidth="146.0" text="Reset VM">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@undo.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Label text="Commands">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <effect>
+                              <Reflection />
+                           </effect>
+                        </Label>
+                        <TextArea editable="false" prefHeight="242.0" prefWidth="235.0" text="Синтаксис операндов:&#10;&#10;   &quot;Hallo world&quot;, 3   -   immediate value&#10;   ax, bx, cx ...     -   register value&#10;   [x]                -   value at the addresse x&#10;   (Note: для регистра BP допускается запись [bp+n], где n - целое число)&#10;&#10;Available commands:&#10;&#10;==============================================================================&#10;| Command   | Description                                     |&#10;==============================================================================&#10;| out X     | output         | вывести сообщение Х                           |&#10;| mov X, Y  | move           | скопировать значение из Y в X                 |&#10;| call X    | call           | вызвать процедуру по адресу Х                 |&#10;| ret       | return         | возврат из процедуры                          |&#10;| push X    | push           | поместить значение Х в стек                   |&#10;| pop X     | pop            | извлечь значение из стека в Х                 |&#10;| loop X    | loop           | цикл по CX на адрес Х                         |&#10;| jmp Х     | jump           | переход к Х                                   |&#10;| inc X     | increment      | увеличить X на единицу                        |&#10;| dec X     | decrement      | уменьшить Х на единицу                        |&#10;| add X, Y  | addition       | добавить Y к X, результат сохранить в X       |&#10;| sub X, Y  | substraction   | вычесть Y из Х, результат сохранить в Х       |&#10;| cmp Х, Y  | compare        | сравнить Х, Y                                 |&#10;| je Х      | jump equal     | переход если ZF = 1                           |&#10;| jne Х     | jump not equal | переход если ZF = 0                           |&#10;| jl X      | jump less      | переход если SF = 1                           |&#10;| jg X      | jump greater   | переход если SF = 0                           |&#10;==============================================================================" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font name="Courier New" size="12.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <TextArea fx:id="edOutput" editable="false" prefHeight="163.0" prefWidth="584.0" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Courier New" size="14.0" />
+               </font>
+            </TextArea>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
