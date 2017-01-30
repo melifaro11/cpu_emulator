@@ -81,7 +81,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label fx:id="lbIP" text="IP" textFill="#34d670">
+                                    <Label text="IP" textFill="#34d670">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -95,7 +95,7 @@
                                     <TextField fx:id="edBX" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                     <TextField fx:id="edCX" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                     <TextField fx:id="edDX" prefHeight="25.0" prefWidth="68.0" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                    <Label fx:id="lbSP" text="SP" textFill="#ff3db6" GridPane.rowIndex="1">
+                                    <Label text="SP" textFill="#ff3db6" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -103,7 +103,7 @@
                                           <Insets left="10.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label fx:id="lbAX" text="AX" textFill="#616161" GridPane.columnIndex="2">
+                                    <Label text="AX" textFill="#616161" GridPane.columnIndex="2">
                                        <GridPane.margin>
                                           <Insets left="20.0" />
                                        </GridPane.margin>
@@ -111,7 +111,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lbBX" text="BX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <Label text="BX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="20.0" />
                                        </GridPane.margin>
@@ -119,7 +119,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lbCX" text="CX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                    <Label text="CX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="20.0" />
                                        </GridPane.margin>
@@ -127,7 +127,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lbDX" text="DX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                    <Label text="DX" textFill="#616161" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets left="20.0" />
                                        </GridPane.margin>
