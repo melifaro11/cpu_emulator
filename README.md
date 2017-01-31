@@ -1,5 +1,5 @@
 # CPU Emulator #
-The CPU Emulator is a simple Java-application for educational purposes, which demonstrate execution of the commands on x86 CPU architecutre.
+The CPU Emulator is a simple Java-application *for educational* purposes, which demonstrate execution of the commands on the x86 architecutre CPU.
 
 # Description #
 The emulator demonstrates in outline functioning of x86-architecture. The emulator has the following propertys:
@@ -24,8 +24,8 @@ The following table shows types of operands, which is allowed for using in all c
 Operand type                 |    Description
 -----------------------------|----------------------------------------
 `"Hallo world"`, `3`, `3.2`  | Immediate value (`string`, `int`, `float`)
-`ax`, `bx`, `cx` ...         | Name of a register (all register values is a `int` type)
-`[x]`                        | Value at the memory addresse `x` (hier `x` - an immediate value or a register)
+`ax`, `bx`, `cx` ...         | Register (all register values have the `int` type)
+`[x]`                        | Value at the memory addresse `x` (where `x` - is an immediate value or a register)
 `[reg + c]`                  | Value at the memory addresse `reg + c`, where `reg` is a register and `c` is a numerical constant (for ex.: `mov [ax + 1], 2`)
 
 ## Commands ##
