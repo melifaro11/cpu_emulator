@@ -2,9 +2,14 @@
 The CPU Emulator is a simple Java-application for educational purposes, which demonstrate execution of the commands on CPU x86-architecutre.
 
 # Description #
+The emulator demonstrates in outline functioning of x86-architecture. The emulator has the following property:
+- The Memory (RAM) to store programm command and data
+- Set of registers: `AX`, `BX`, `CX`, `DX`, `IP`, `SP`, `BP`
+- Set of commands: `out`, `mov`, `call`, `ret`, `mul`, `div`, `jmp`...
 
 ## Memory ##
-...
+
+The memory in the emulator contains 64 cells, each of which is of the type `String`. In this way each cell can store any value: command, `int`, `float`, `String` and any other values.
 
 ## Operands ##
 
