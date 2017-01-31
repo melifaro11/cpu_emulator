@@ -43,6 +43,7 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			primaryStage.setTitle(Messages.APP_TITLE);
 		} catch(Exception e) {
 			showError(Messages.ALERT_START_ERROR,
 					   e.getMessage());

@@ -22,6 +22,11 @@ package de.malex.cpuemulator.constants;
  * Text strings
  */
 public class Messages {
+	
+	/**
+	 * Title of the application
+	 */
+	public static final String APP_TITLE				=			"CPU Emulator";
 
 	/**
 	 * Title of the "Error" dialog box
