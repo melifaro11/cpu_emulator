@@ -58,7 +58,7 @@ public class VM {
 		registers = new HashMap<String, Register>();
 		flags = new HashMap<String, Flag>();
 		
-		memory = new Memory(this, Constants.MEMORY_SIZE, memTable);
+		memory = new Memory(this, memTable);
 		
 		commands = new HashMap<String, ICommand>();
 	}
@@ -320,5 +320,30 @@ public class VM {
 	 */
 	public String getMem(int addr) throws VMException {
 		return memory.getValue(addr);
+	}
+	
+	/**
+	 * Execute given command on virtual machine
+	 * 
+	 * @param cmd The command to execute
+	 * 
+	 * @throws VMException 
+	 */
+	public void executeCmd(String cmd) throws VMException {
+		String [] cmdTokens = cmd.split(" ", 2);
+		cmdTokens[0] = cmdTokens[0].trim();
+		
+		String params = "";
+		if (cmdTokens.length > 1)
+			params = cmdTokens[1];
+		params = params.trim();
+		
+		ICommand command = commands.get(cmdTokens[0].toUpperCase());
+		
+		if (command != null) {
+			command.execute(params);
+		} else {
+			throw new VMException(String.format(Messages.ALERT_UNKNOWN_CMD, cmdTokens[0].toUpperCase()));
+		}
 	}
 }

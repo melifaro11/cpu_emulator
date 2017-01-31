@@ -23,7 +23,11 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command POP a
+ * POP a
+ * 
+ * Loads the value from the top of the stack to the location
+ * specified with the destination operand and then increments
+ * the stack pointer
  */
 public class CommandPop extends ICommand {
 	

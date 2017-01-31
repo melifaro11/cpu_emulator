@@ -23,7 +23,9 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command JMP a
+ * JMP a
+ * 
+ * Jump to command at the address a
  */
 public class CommandJmp extends ICommand {
 	

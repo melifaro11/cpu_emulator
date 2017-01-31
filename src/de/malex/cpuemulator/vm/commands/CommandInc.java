@@ -22,7 +22,9 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command INC a
+ * INC a
+ * 
+ * Adds 1 to the destination operand
  */
 public class CommandInc extends ICommand {
 	

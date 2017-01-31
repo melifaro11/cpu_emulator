@@ -23,7 +23,10 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command RET
+ * RET
+ * 
+ * Transfers program control to a return address located
+ * on the top of the stack.
  */
 public class CommandRet extends ICommand {
 	

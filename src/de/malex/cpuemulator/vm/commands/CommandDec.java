@@ -22,7 +22,9 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command DEC a
+ * DEC a
+ * 
+ * Subtracts 1 from the destination operand
  */
 public class CommandDec extends ICommand {
 	

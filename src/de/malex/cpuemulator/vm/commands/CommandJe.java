@@ -23,7 +23,9 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command JE a
+ * JE a
+ * 
+ * Jump to command at the address a, if equal (ZF = 1).
  */
 public class CommandJe extends ICommand {
 	

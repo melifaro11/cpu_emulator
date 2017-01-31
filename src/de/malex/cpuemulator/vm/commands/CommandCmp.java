@@ -22,7 +22,10 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command CMP a, b
+ * CMP a, b
+ * 
+ * Compares the first source operand with the second source operand
+ * and sets the ZF-flag (Zero Flag) according to the results.
  */
 public class CommandCmp extends ICommand {
 	

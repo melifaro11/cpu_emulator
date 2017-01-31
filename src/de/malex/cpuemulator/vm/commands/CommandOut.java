@@ -18,31 +18,37 @@
  */
 package de.malex.cpuemulator.vm.commands;
 
-import de.malex.cpuemulator.constants.Registers;
+import de.malex.cpuemulator.constants.Messages;
 import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
+import javafx.scene.control.TextArea;
 
 /**
- * CALL a
+ * OUT a
  * 
- * Saves procedure linking information on the stack and branches
- * to the procedure (called procedure) specified with the destination
- * (target) operand.
+ * Output `a` into console (is a syntactic sugar for
+ * the emulator, not an x86-instruction)
  */
-public class CommandCall extends ICommand {
+public class CommandOut extends ICommand {
 	
 	/**
 	 * Name of the command
 	 */
-	private static final String COMMAND_NAME		=			"CALL";
+	private static final String COMMAND_NAME		=			"OUT";
+	
+	/**
+	 * Output component
+	 */
+	private TextArea output;
 
 	/**
-	 * Create new {@link CommandCall} command
+	 * Create new {@link CommandOut} command
 	 * 
 	 * @param vm The {@link VM} to add this command
 	 */
-	public CommandCall(VM vm) {
+	public CommandOut(VM vm, TextArea console) {
 		super(vm, COMMAND_NAME);
+		this.output = console;
 		
 		vm.addCommand(this);
 	}
@@ -52,18 +58,13 @@ public class CommandCall extends ICommand {
 	 */
 	@Override
 	public void execute(String params) throws VMException {
-
-		Integer address = Integer.parseInt(vm.getValueFrom(params));
-		checkMemRange(address);
-			
-		Integer stack = vm.getRegisterValue(Registers.REG_SP) - 1;
-		checkMemRange(address);
-
-		vm.setRegisterValue(Registers.REG_SP, stack);
-		vm.setMem(stack, String.valueOf(vm.getRegisterValue(Registers.REG_IP)));
-
-		vm.setRegisterValue(Registers.REG_IP, address);
-
+		try {
+			String val = vm.getValueFrom(params);
+			output.appendText(val + "\n");
+		} catch (Exception e) {
+			throw new VMException(String.format(Messages.ALERT_EXEC_ERROR, name));
+		}
+		
 		vm.setFlags(0, 0);
 	}
 }

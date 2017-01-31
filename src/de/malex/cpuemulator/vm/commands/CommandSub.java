@@ -22,7 +22,11 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command SUB a, b
+ * SUB a, b
+ * 
+ * Subtracts the second operand (source operand) from the
+ * first operand (destination operand) and stores the result
+ * in the destination operand.
  */
 public class CommandSub extends ICommand {
 	

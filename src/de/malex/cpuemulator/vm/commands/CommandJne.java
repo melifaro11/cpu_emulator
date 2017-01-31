@@ -23,7 +23,9 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command JNE a
+ * JNE a
+ * 
+ * Jump to command at the address a, if not equal (ZF = 0).
  */
 public class CommandJne extends ICommand {
 	

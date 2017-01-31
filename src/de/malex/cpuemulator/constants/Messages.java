@@ -72,4 +72,9 @@ public class Messages {
 	 * Message text "Error executing ..."
 	 */
 	public static final String ALERT_EXEC_ERROR			=			"Error by executing command %s";
+	
+	/**
+	 * Message text "Unknown command..."
+	 */
+	public static final String ALERT_UNKNOWN_CMD		=			"Unknown command: %s";
 }

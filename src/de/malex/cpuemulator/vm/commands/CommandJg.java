@@ -23,25 +23,23 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * CALL a
+ * JG a
  * 
- * Saves procedure linking information on the stack and branches
- * to the procedure (called procedure) specified with the destination
- * (target) operand.
+ * Jump to the command at the address a, if greater
  */
-public class CommandCall extends ICommand {
+public class CommandJg extends ICommand {
 	
 	/**
 	 * Name of the command
 	 */
-	private static final String COMMAND_NAME		=			"CALL";
+	private static final String COMMAND_NAME		=			"JG";
 
 	/**
-	 * Create new {@link CommandCall} command
+	 * Create new {@link CommandJg} command
 	 * 
 	 * @param vm The {@link VM} to add this command
 	 */
-	public CommandCall(VM vm) {
+	public CommandJg(VM vm) {
 		super(vm, COMMAND_NAME);
 		
 		vm.addCommand(this);
@@ -56,14 +54,10 @@ public class CommandCall extends ICommand {
 		Integer address = Integer.parseInt(vm.getValueFrom(params));
 		checkMemRange(address);
 			
-		Integer stack = vm.getRegisterValue(Registers.REG_SP) - 1;
-		checkMemRange(address);
-
-		vm.setRegisterValue(Registers.REG_SP, stack);
-		vm.setMem(stack, String.valueOf(vm.getRegisterValue(Registers.REG_IP)));
-
-		vm.setRegisterValue(Registers.REG_IP, address);
-
+		if (vm.getSF() == 0) {
+			vm.setRegisterValue(Registers.REG_IP, address);
+		}
+	
 		vm.setFlags(0, 0);
 	}
 }

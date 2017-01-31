@@ -23,7 +23,9 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command PUSH a
+ * PUSH a
+ * 
+ * Decrements the stack pointer and then stores the source operand on the top of the stack.
  */
 public class CommandPush extends ICommand {
 	

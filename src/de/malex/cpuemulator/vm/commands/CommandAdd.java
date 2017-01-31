@@ -22,7 +22,10 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command ADD a, b
+ * ADD a, b
+ * 
+ * Adds the first operand 'a' (destination operand) and the second operand 'b'
+ * (source operand) and stores the result in the destination operand 'a'
  */
 public class CommandAdd extends ICommand {
 	

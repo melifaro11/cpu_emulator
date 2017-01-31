@@ -23,7 +23,9 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command MOV a, b
+ * MOV a, b
+ * 
+ * Copies the second operand (source operand) to the first operand (destination operand)
  */
 public class CommandMov extends ICommand {
 	

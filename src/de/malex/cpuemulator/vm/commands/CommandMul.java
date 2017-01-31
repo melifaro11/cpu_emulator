@@ -18,30 +18,29 @@
  */
 package de.malex.cpuemulator.vm.commands;
 
-import de.malex.cpuemulator.constants.Registers;
 import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * CALL a
+ * MUL a, b
  * 
- * Saves procedure linking information on the stack and branches
- * to the procedure (called procedure) specified with the destination
- * (target) operand.
+ * Performs a multiplication of the first operand
+ * (destination operand) and the second operand (source operand)
+ * and stores the result in the destination operand.
  */
-public class CommandCall extends ICommand {
+public class CommandMul extends ICommand {
 	
 	/**
 	 * Name of the command
 	 */
-	private static final String COMMAND_NAME		=			"CALL";
+	private static final String COMMAND_NAME		=			"MUL";
 
 	/**
-	 * Create new {@link CommandCall} command
+	 * Create new {@link CommandMul} command
 	 * 
 	 * @param vm The {@link VM} to add this command
 	 */
-	public CommandCall(VM vm) {
+	public CommandMul(VM vm) {
 		super(vm, COMMAND_NAME);
 		
 		vm.addCommand(this);
@@ -52,18 +51,17 @@ public class CommandCall extends ICommand {
 	 */
 	@Override
 	public void execute(String params) throws VMException {
-
-		Integer address = Integer.parseInt(vm.getValueFrom(params));
-		checkMemRange(address);
-			
-		Integer stack = vm.getRegisterValue(Registers.REG_SP) - 1;
-		checkMemRange(address);
-
-		vm.setRegisterValue(Registers.REG_SP, stack);
-		vm.setMem(stack, String.valueOf(vm.getRegisterValue(Registers.REG_IP)));
-
-		vm.setRegisterValue(Registers.REG_IP, address);
-
-		vm.setFlags(0, 0);
+		parseParam(params);
+		
+		Integer value1 = Integer.parseInt(param2);
+		Integer value2 = Integer.parseInt(param1);
+				
+		vm.setValueTo(param1, String.valueOf(value1 * value2));
+		
+		if (value1 * value2 == 0) {
+			vm.setFlags(1, 0);
+		} else {
+			vm.setFlags(0, 0);
+		}
 	}
 }

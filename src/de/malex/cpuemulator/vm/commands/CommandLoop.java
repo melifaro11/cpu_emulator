@@ -23,7 +23,13 @@ import de.malex.cpuemulator.vm.VM;
 import de.malex.cpuemulator.vm.VMException;
 
 /**
- * Command LOOP a
+ * LOOP a
+ * 
+ * Performs a loop operation using the CX register as a counter.
+ * Each time the LOOP instruction is executed, the count register
+ * is decremented, then checked for 0. If the count is 0, the loop
+ * is terminated and program execution continues with the instruction
+ * following the LOOP instruction.
  */
 public class CommandLoop extends ICommand {
 	

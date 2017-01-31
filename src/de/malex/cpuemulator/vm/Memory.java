@@ -22,7 +22,6 @@ import de.malex.cpuemulator.MemoryCell;
 import de.malex.cpuemulator.constants.Constants;
 import de.malex.cpuemulator.constants.Messages;
 import de.malex.cpuemulator.constants.Registers;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -35,23 +34,23 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 /**
- * RAM
+ * Memory of the virtual machine
  */
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class Memory {
 
 	/**
-	 * The {@link TextField} to display value
+	 * The {@link TableView} to display value
 	 */
 	private TableView memTable;
 	
 	/**
-	 * Create new {@link Register} object
+	 * Create new {@link Memory} object
 	 * 
-	 * @param name Name of the register
-	 * @param field The {@link TextField} to display value
+	 * @param vm The {@link VM} to link
+	 * @param memTable The {@link TableView} component to display memory content
 	 */
-	public Memory(VM vm, int size, TableView memTable) {
+	public Memory(VM vm, TableView memTable) {
 		
 		this.memTable = memTable;
 		
@@ -72,7 +71,7 @@ public class Memory {
                   });
 		  
 		 ObservableList<MemoryCell> data = FXCollections.observableArrayList();
-		 for (int i = 0; i < size; i++)
+		 for (int i = Constants.MEMORY_START_ADDR; i <= Constants.MEMORY_END_ADDR; i++)
 			 data.add(new MemoryCell(i, "0"));
 		 
 		 memTable.setItems(data);
@@ -159,7 +158,7 @@ public class Memory {
 	}
 	
 	/**
-	 * Update content of the memory table
+	 * Update visual component
 	 */
 	public void update() {
 		memTable.refresh();

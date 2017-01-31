@@ -1,36 +1,40 @@
+/**
+ * Copyright 2016-2017 Alexandr Mitiaev
+ * 
+ * This file is part of CPU Emulator.
+ * 
+ * CPU Emulator is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * CPU Emulator is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with CPU Emulator. If not, see <http://www.gnu.org/licenses/>.
+ */
 package de.malex.cpuemulator;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import de.malex.cpuemulator.constants.Constants;
-import de.malex.cpuemulator.constants.Messages;
 import de.malex.cpuemulator.constants.Registers;
 import de.malex.cpuemulator.vm.Flag;
 import de.malex.cpuemulator.vm.Register;
 import de.malex.cpuemulator.vm.VM;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import de.malex.cpuemulator.vm.VMException;
+import de.malex.cpuemulator.vm.commands.*;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
 
 /**
  * Controller class for MainForm.xml-Form
@@ -120,7 +124,6 @@ public class MainFormController implements Initializable {
 	/**
 	 * Initialize form
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -150,100 +153,47 @@ public class MainFormController implements Initializable {
 		
 		vm.addFlag(new Flag(Registers.REG_ZF, lbZF));
 		vm.addFlag(new Flag(Registers.REG_SF, lbSF));
+		
+		vm.addCommand(new CommandAdd(vm));
+		vm.addCommand(new CommandCall(vm));
+		vm.addCommand(new CommandCmp(vm));
+		vm.addCommand(new CommandDec(vm));
+		vm.addCommand(new CommandInc(vm));
+		vm.addCommand(new CommandJe(vm));
+		vm.addCommand(new CommandJg(vm));
+		vm.addCommand(new CommandJl(vm));
+		vm.addCommand(new CommandJmp(vm));
+		vm.addCommand(new CommandJne(vm));
+		vm.addCommand(new CommandLoop(vm));
+		vm.addCommand(new CommandMov(vm));
+		vm.addCommand(new CommandOut(vm, edOutput));
+		vm.addCommand(new CommandPop(vm));
+		vm.addCommand(new CommandPush(vm));
+		vm.addCommand(new CommandRet(vm));
+		vm.addCommand(new CommandSub(vm));
+		vm.addCommand(new CommandMul(vm));
+		vm.addCommand(new CommandDiv(vm));
 	}
 	
 	/**
-	 * Process one step
+	 * Execute next command from memory
 	 */
 	@FXML
 	public void onRunClicked() {
-		int ip = Integer.parseInt(edIP.getText());
-		
-		MemoryCell cell = (MemoryCell) tblMemory.getItems().get(ip);
-		
-		vm.setRegisterValue(Registers.REG_IP, vm.getRegisterValue(Registers.REG_IP) + 1);
-		
-		String cmd = cell.getValue();
-		
-		String [] cmdTokens = cmd.split(" ", 2);
-		cmdTokens[0] = cmdTokens[0].trim();
-		String params = "";
-		if (cmdTokens.length > 1)
-			params = cmdTokens[1];
-		params = params.trim();
-		
-		switch (cmdTokens[0].toUpperCase()) {
-		
-		
-		case "JMP":
-
+		try {
+			int ip = Integer.parseInt(edIP.getText());
+			MemoryCell cell = (MemoryCell) tblMemory.getItems().get(ip);
 			
-		case "JL":
-			try {
-				String val = getValueFrom(params);
-				Integer address = 0;
-				try {
-					address = Integer.parseInt(val);
-					if (address < 0 || address > 63)
-						throw new Exception();
-				} catch (Exception e) {
-					showAlert(AlertType.ERROR, "Error", "Error executing command " + cmd, "Invalid jump address: " + val);
-				}
-				
-				if (lbSF.getText() == "1")
-					setRegisterValue("IP", address);
-			} catch (Exception e) {
-				showAlert(AlertType.ERROR, "Error", "Error executing command " + cmd, e.getMessage());
-			}
-			setFlags(0, 0);
-			break;
+			vm.setRegisterValue(Registers.REG_IP, vm.getRegisterValue(Registers.REG_IP) + 1);
+			String cmd = cell.getValue();
 			
-		case "JG":
-			try {
-				String val = getValueFrom(params);
-				Integer address = 0;
-				try {
-					address = Integer.parseInt(val);
-					if (address < 0 || address > 63)
-						throw new Exception();
-				} catch (Exception e) {
-					showAlert(AlertType.ERROR, "Error", "Error executing command " + cmd, "Invalid jump address: " + val);
-				}
-				
-				if (lbSF.getText() == "0")
-					setRegisterValue("IP", address);
-			} catch (Exception e) {
-				showAlert(AlertType.ERROR, "Error", "Error executing command " + cmd, e.getMessage());
-			}
-			setFlags(0, 0);
-			break;
-			
-		case "JE":
-
-			
-		case "JNE":
-		
-			
-		case "LOOP":
-
-
-
-			
-		case "OUT":
-			try {
-				String val = getValueFrom(params);
-				edOutput.appendText(val + "\n");
-			} catch (Exception e) {
-				Main.showError("Error executing command " + cmd, e.getMessage());
-			}
-			setFlags(0, 0);
-			break;
-			
-		default:
-			Main.showError("Error executing command", "Unknown command: " + cmdTokens[0]);
+			vm.executeCmd(cmd);
+			tblMemory.refresh();
+		} catch (VMException e) {
+			Main.showError(e.getMessage(), e.getMessage());
 		}
 		
-		tblMemory.refresh();
+		
 	}
 	
 	/**
