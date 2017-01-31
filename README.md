@@ -11,8 +11,8 @@ The emulator demonstrates in outline functioning of x86-architecture. The emulat
    - Data registers`AX`, `BX`, `CX`, `DX`
 - Set of commands: `out`, `mov`, `call`, `ret`, `mul`, `div`, `jmp`...
 
--> ![Application screenshot](Screen.png?raw=true "Screenshot") <-
--> *Screenshot* <-
+![Application screenshot](Screen.png?raw=true "Screenshot")
+*Screenshot*
 
 ## Memory ##
 
