@@ -11,6 +11,8 @@ The emulator demonstrates in outline functioning of x86-architecture. The emulat
    - Data registers`AX`, `BX`, `CX`, `DX`
 - Set of commands: `out`, `mov`, `call`, `ret`, `mul`, `div`, `jmp`...
 
+![Application screenshot](Screen.png?raw=true "Screenshot")
+
 ## Memory ##
 
 The memory in the emulator contains 64 cells, each of which is of the type `String`. In this way each cell can store any value: command, `int`, `float`, `String` and any other values.
