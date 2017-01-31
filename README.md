@@ -13,6 +13,10 @@ The emulator demonstrates in outline functioning of x86-architecture. The emulat
 
 ![Application screenshot](Screen.png?raw=true "Screenshot")
 
+##Dependency##
+- [Java Runtime 1.6+](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
+- [JavaFX Library](http://docs.oracle.com/javase/8/javafx/get-started-tutorial/jfx-overview.htm#JFXST784)
+
 ## Memory ##
 
 The memory in the emulator contains 64 cells, each of which is a simple string. In this way each cell can store any value: a command, `int`, `float`, `String` variables and any other values.
